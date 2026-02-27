@@ -15,5 +15,6 @@ public class Day01_bloodelig {
             System.out.println("not eligible");
         }
     }
+    sc.close();
 }
 }
