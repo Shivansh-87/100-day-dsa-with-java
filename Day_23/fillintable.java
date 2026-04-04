@@ -1,6 +1,6 @@
 import java.sql.*;
-
-public class Main {
+//agar table me new entry fill karni hai
+public class fillintable {
     private static final String url ="jdbc:mysql://localhost:3306/mydb";
     private static  final String username = "root";
     private static final String password ="1800425";
@@ -14,20 +14,21 @@ public class Main {
         try{
             Connection connection=DriverManager.getConnection(url,username,password);
             Statement statement = connection.createStatement();
-            String query="select * from students";
-            ResultSet resultSet=statement.executeQuery(query);
-            while (resultSet.next()){
-                int id=resultSet.getInt("id");
-                String name=resultSet.getString("name");
-                int age=resultSet.getInt("age");
-                double marks=resultSet.getDouble("marks");
-                System.out.println("ID "+id );
-                System.out.println("NAME "+name);
-                System.out.println("age "+age);
-                System.out.println("marks "+marks);
+            String query=String.format("INSERT INTO students(name,age,marks) VALUES('%s',%o,%f)","Rahul",23,74.5);
+            //String query=String.format("UPDATE students SET marks=%f WHERE id=%d",89.5,2);//if u want to update marks of id 2
+            //String query= "DELETE FROM students WHERE ID=2"; //if u want to delete the record of id 2
+            int rowsAffected=statement.executeUpdate(query);
+            if(rowsAffected>0){
+                System.out.println("Data Inserted Sucessfully");
+            }else{
+                System.out.println("data not inserted");
             }
+
+
         }catch(SQLException e){
             System.out.println(e.getMessage());
+
         }
+
     }
 }
