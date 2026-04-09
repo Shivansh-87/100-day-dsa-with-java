@@ -1,0 +1,5 @@
+today i do recursion 4 question 
+2 simple using recursion
+2 using backtarcking
+euclidean algorithm bhi kari
+1. Simple Recursion: Factorial of a number
